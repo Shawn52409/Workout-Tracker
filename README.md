@@ -26,7 +26,6 @@ Created by Shawn Miller
 - Heroku
 
 # Appearance
-![Appearance of the homepage of the running app](./img/screenshot.jpg)
 
 # Bugs
 No known bugs
