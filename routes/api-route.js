@@ -1,10 +1,20 @@
 // Required dependancies
 const router = require("express").Router();
-const Workout = require("../models");
+const Workout = require("../models/workout.js");
 
-// Get the last work
-router.get("api/workouts", (req, res) => {
-
+// Get the last workout
+router.get("/api/workouts", (req, res) => {
+    Workout.aggregate([
+        {
+        $addFields: {
+            totalDuration: {$sum: "$exercises.duration"}
+            }
+        }
+    ]).then((db) => {
+        res.json(db);        
+    }).catch((err) => {
+        res.status(400).json(err);
+    });
 });
 
 // Get the workout within one week
