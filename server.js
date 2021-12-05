@@ -1,4 +1,4 @@
-// Declare dependancies
+// Required dependancies
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 });
 
 // Routes
-// app.use(require("./routes/api-route.js"));
+app.use(require("./routes/api-route.js"));
 app.use(require("./routes/html-route.js"));
 
 app.listen(PORT, () => {
