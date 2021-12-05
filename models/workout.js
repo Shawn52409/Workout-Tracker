@@ -8,7 +8,7 @@ const workoutSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  exercises: {
+  exercises: [{
     type: {
         type: String,
     },
@@ -30,7 +30,7 @@ const workoutSchema = new Schema({
     sets: {
         type: Number,
     },
-  },
+  }],
 });
 
 // Create workout db model with workout schema
