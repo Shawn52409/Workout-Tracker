@@ -34,9 +34,9 @@ router.get("/api/workouts/range", (req, res) => {
 });
 
 // Add a workout
-router.put("api/workouts", (req, res) => {
+router.put("api/workouts/:id", (req, res) => {
     Workout.findById(
-        {_id: params.id},
+        {_id: req.params.id},
         {$push: {
             exercises: req.body
             }
@@ -45,9 +45,18 @@ router.put("api/workouts", (req, res) => {
 });
 
 // Create new workout
-router.post("api/workouts", (req, res) => {
-
-});
+router.post("/api/workouts", (req, res) => {
+    console.log(req.body);
+    Workout.create(req.body)
+        // console.log("I'm here!")
+        .then(newData => {
+            res.json(newData);
+            console.log(newData);
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        });
+    });
 
 // Export routes
 module.exports = router;
