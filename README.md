@@ -40,7 +40,7 @@ https://github.com/Shawn52409/Workout-Tracker
 ![Appearance of the stats page of the running app](./img/screenshot2.jpg)
 
 # Bugs
-Currently the app will only save to the database on a local machine. Currently the Heroku deployed app is being debugged to fix the connection between the code, Heroku and the mongodb Atlas database. As soon as that issue is fixed this README will be updated.
+No known bugs
 
 # Contact-Info
 shawnsmm@gmail.com
