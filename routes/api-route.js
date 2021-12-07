@@ -34,24 +34,28 @@ router.get("/api/workouts/range", (req, res) => {
 });
 
 // Add a workout
-router.put("api/workouts/:id", (req, res) => {
-    Workout.findById(
+router.put("/api/workouts/:id", (req, res) => {
+    Workout.findByIdAndUpdate(
         {_id: req.params.id},
-        {$push: {
-            exercises: req.body
-            }
-        }
+        {$push: {exercises: req.body}},
+        {new: true}
     )
+    .then(db => {
+        res.json(db);
+    })
+    .catch((err) => {
+        res.status(400).json(err);
+    });
 });
 
 // Create new workout
-router.post("/api/workouts", (req, res) => {
-    console.log(req.body);
-    Workout.create(req.body)
+router.post("/api/workouts", ({body}, res) => {
+    // console.log(body);
+    Workout.create(body)
         // console.log("I'm here!")
-        .then(newData => {
-            res.json(newData);
-            console.log(newData);
+        .then(db => {
+            res.json(db);
+            console.log(db);
         })
         .catch((err) => {
             res.status(400).json(err);
